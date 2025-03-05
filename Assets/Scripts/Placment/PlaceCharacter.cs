@@ -10,20 +10,17 @@ public class PlaceCharacter : NetworkBehaviour
     [SerializeField] private GameObject placementObject;
     
 
-
-    private List<GameObject> placedObjects = new();
-
     private bool isPlaced = false;
     private Camera mainCam;
+
 
     public static event Action characterPlaced; 
     // Update is called once per frame
 
     private void Start()
     {
-        mainCam = GameObject.FindObjectType<Camera>();
+        mainCam = GameObject.FindObjectOfType<Camera>();
     }
-
 
     void Update()
     {
@@ -98,6 +95,6 @@ public class PlaceCharacter : NetworkBehaviour
             
         characterNetworkObject.SpawnWithOwnership(callerID);
         
-        AllPlayerDataManager.Instance.AddPlacedPlayer(callerID);
+        
     }
 }
